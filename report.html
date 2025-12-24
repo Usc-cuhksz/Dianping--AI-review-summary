@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI 差评梳理</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --card: #f9fafb;
+    --line: #e5e7eb;
+    --quote-bg: #fff1f0;
+    --quote-line: #ffccc7;
+    --red: #ff4d4f;
+    --orange: #fa8c16;
+    --yellow: #fadb14;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 14px 14px 40px;
+  }
+
+  .header {
+    background: #f3f4f6;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 14px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .category {
+    margin-top: 14px;
+  }
+  .category-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 12px 2px 8px;
+  }
+
+  details {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin: 8px 0;
+    overflow: hidden;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  summary::-webkit-details-marker { display: none; }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .tag {
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .pill {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .pill.red { background: var(--red); }
+  .pill.orange { background: var(--orange); }
+  .pill.yellow { background: #9ca3af; }
+
+  .arrow {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .content {
+    border-top: 1px solid var(--line);
+    padding: 12px 12px 14px;
+  }
+
+  .desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+  }
+
+  .quote-box {
+    background: var(--quote-bg);
+    border: 1px solid var(--quote-line);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .quote {
+    margin: 6px 0;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .meta {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🛡️ AI 差评梳理</h1>
+      <p>基于近 30 天 25 条低分评价 · 生成日期 2024-05-23</p>
+    </div>
+<div class="category"><div class="category-title">食材口味</div>
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">肉质口感差</div>
+    </div>
+    <div class="right">
+      <div class="pill red">56% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 多名用户反馈肉质过硬、咬不动，且疑似使用合成肉，烹饪后易碎</p>
+    <div class="quote-box">
+      <div class="quote">💬 “烤完以后比鞋底还硬，咬肌发力能咬断”</div>
+<div class="quote">💬 “肉是合成肉，吃一半儿掉一半儿，牛肋条烤出来都碎了”</div>
+    </div>
+    <div class="meta">提及次数：14</div>
+  </div>
+</details>
+
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">食材不新鲜</div>
+    </div>
+    <div class="right">
+      <div class="pill red">52% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 部分食材被指存在变质异味，或多为速冻品，新鲜度不足</p>
+    <div class="quote-box">
+      <div class="quote">💬 “三文鱼颜色发白，还有股淡淡的变质气味”</div>
+<div class="quote">💬 “全是冻货，虾肉发粉，甚至鸡翅没熟带血水”</div>
+    </div>
+    <div class="meta">提及次数：13</div>
+  </div>
+</details>
+
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">菜品种类单一</div>
+    </div>
+    <div class="right">
+      <div class="pill orange">40% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 菜品选择范围窄，高价值食材占比低，部分品类存在货不对板现象</p>
+    <div class="quote-box">
+      <div class="quote">💬 “种类少的可怜，羊肉串结果是猪肉串”</div>
+<div class="quote">💬 “主要是猪肉为主牛肉很少，新鲜原切才5种”</div>
+    </div>
+    <div class="meta">提及次数：10</div>
+  </div>
+</details>
+
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">调味品质异常</div>
+    </div>
+    <div class="right">
+      <div class="pill yellow">16% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 反馈称店内部分佐料或调味方式口感不佳，品质存疑</p>
+    <div class="quote-box">
+      <div class="quote">💬 “桶里一股抹布味，寿司醋用的是陈醋”</div>
+    </div>
+    <div class="meta">提及次数：4</div>
+  </div>
+</details>
+</div><div class="category"><div class="category-title">服务运营</div>
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">供应效率低下</div>
+    </div>
+    <div class="right">
+      <div class="pill orange">44% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 热门菜品补货速度慢，存在排队时间过长或过早售罄的情况</p>
+    <div class="quote-box">
+      <div class="quote">💬 “7点半不到一大半菜就没了，吃了个寂寞”</div>
+<div class="quote">💬 “三文鱼生蚝限量，排队40分钟只能拿2个”</div>
+    </div>
+    <div class="meta">提及次数：11</div>
+  </div>
+</details>
+
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">服务意识淡薄</div>
+    </div>
+    <div class="right">
+      <div class="pill orange">32% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 服务人员响应不及时，工作态度冷淡，缺乏有效的沟通与反馈</p>
+    <div class="quote-box">
+      <div class="quote">💬 “话没说完就回我没有，转身不再搭理我”</div>
+<div class="quote">💬 “纸糊底了也没人换，服务员还推着餐车躲在桌边蛐蛐人”</div>
+    </div>
+    <div class="meta">提及次数：8</div>
+  </div>
+</details>
+
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">限量分配不均</div>
+    </div>
+    <div class="right">
+      <div class="pill yellow">12% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 限量菜品的发放标准执行不统一，导致用户体验不佳</p>
+    <div class="quote-box">
+      <div class="quote">💬 “一人限两盘，结果只给我一盘，纯欺负人”</div>
+    </div>
+    <div class="meta">提及次数：3</div>
+  </div>
+</details>
+</div><div class="category"><div class="category-title">环境卫生</div>
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">环境卫生欠佳</div>
+    </div>
+    <div class="right">
+      <div class="pill yellow">16% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 用餐区及相关设施卫生维护不到位，出现异物或设备故障现象</p>
+    <div class="quote-box">
+      <div class="quote">💬 “有一只巨大的苍蝇飞来飞去，吃完拉肚子”</div>
+<div class="quote">💬 “饮料机是坏的，收餐车停桌边半小时不带动，倒胃口”</div>
+    </div>
+    <div class="meta">提及次数：4</div>
+  </div>
+</details>
+</div><div class="category"><div class="category-title">性价比/其他</div>
+<details>
+  <summary>
+    <div class="left">
+      <div class="tag">性价比偏低</div>
+    </div>
+    <div class="right">
+      <div class="pill orange">48% 提及</div>
+      <div class="arrow">⌄</div>
+    </div>
+  </summary>
+  <div class="content">
+    <p class="desc">📝 用户认为实际餐食品质与服务水平无法匹配其消费价格</p>
+    <div class="quote-box">
+      <div class="quote">💬 “70多的自助都比这100多的好”</div>
+<div class="quote">💬 “一百多一个人性价比不高，看宣传去的但非常失望”</div>
+    </div>
+    <div class="meta">提及次数：12</div>
+  </div>
+</details>
+</div>
+  </div>
+<script>
+  // 让箭头跟随展开状态变化（纯装饰）
+  document.querySelectorAll("details").forEach(d => {
+    const arrow = d.querySelector(".arrow");
+    const update = () => { arrow.textContent = d.open ? "⌃" : "⌄"; };
+    d.addEventListener("toggle", update);
+    update();
+  });
+</script>
+</body>
+</html>
