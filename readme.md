@@ -1,101 +1,60 @@
-# 🛡️ Dianping AI Review Radar  
-*(AI-Powered Negative Review Summarizer)*
+# 🛡️ 大众点评 AI 差评避雷针 (Dianping AI Review Summarizer)
 
-> **Efficiency, not decision-making**: Help users quickly identify potential “red flags” of a restaurant by compressing dozens of negative reviews into a clear, structured risk report.
+> **提效而非决策**：帮助用户快速了解餐厅的潜在“雷点”，降低阅读海量差评的认知负担。
 
----
+## 📖 背景与痛点
+在选择餐厅时，用户往往更关注风险（差评），因为这决定了体验的下限。然而，大众点评上的差评数量庞大、观点分散且情绪化严重。用户为了“避雷”，需要花费大量时间逐条阅读，**认知负担极重**。
 
-## 📖 Background & Pain Points
+本项目旨在通过 AI 自动化梳理差评，生成一份客观、结构化的**“避雷报告”**，让用户只需 10 秒钟就能看清 100 条差评里的核心问题。
 
-When choosing a restaurant, users care more about **risk** than upside — because bad experiences define the lower bound of satisfaction.  
-On Dianping, negative reviews are numerous, scattered, and highly emotional. To “avoid pitfalls,” users must read many individual reviews, which creates an **extremely high cognitive load**.
-
-This project aims to use AI to automatically distill negative reviews into an **objective, structured “risk report”**, allowing users to understand the core issues in **10 seconds instead of reading 100 reviews**.
-
----
-
-## 🛠️ Project Overview
-
-This is a **Python + LLM–based automation demo**.
-
-We selected the **first 25 negative reviews** of  
-**Lihua Self-Service BBQ (Yuhua MixC branch)** on Dianping as a sample, and used **Google Gemini 3 Flash** for large-context reasoning and summarization.  
-The final output is a **mobile-friendly HTML report** that highlights recurring problems and supporting evidence.
-
----
-
-## 📂 Project Structure
-
+## 🛠️ 项目介绍
+这是一个基于 Python 和 LLM 的自动化 Demo。
+我们选取了 **大众点评 - 梨花自主烤肉（雨花万象天地店）** 的前 25 条差评作为样本，利用 **Google Gemini 3 Flash** 模型强大的上下文处理能力，生成可视化的 HTML 报告。
+![Demo Screenshot](report.png)
+## 📂 文件结构
 ```text
 .
 ├── data/
-│   └── reviews.json       # Raw negative reviews (Dianping sample)
-├── main.ipynb             # Core logic (Jupyter Notebook)
-├── report.html            # Generated AI risk report (HTML)
-└── readme.md              # Project documentation
+│   └── reviews.json       # 原始差评数据（梨花自主烤肉样本）
+├── main.ipynb             # 核心逻辑代码 (Jupyter Notebook)
+├── report.html            # 最终生成的 AI 差评分析报告
+└── readme.md              # 项目说明文档
 ```
-## 🚀 Technical Implementation
+## 🚀 技术实现
 
-### 1) Model Invocation
-
-- **Model**: `gemini-3-flash-preview` (via API)  
-- **Goal**: Convert a large set of free-text negative reviews into structured JSON “risk points” suitable for frontend rendering.
-
----
-
-### 2) Strategy: Map–Reduce (Divide & Conquer)
-
-#### Map Stage — `chunk_process`
-
-- Split the review list into chunks with `chunk_size = 13`
-- Each chunk is independently sent to the model to:
-  - Extract concrete complaints
-  - Classify them into meaningful categories
-- **Output**: structured fragments (JSON or near-JSON text)
-
-> **Intuition**: Limiting each call to 13 reviews reduces context pressure and improves output consistency and stability.
+### 1) 模型调用
+- **模型**：`gemini-3-flash-preview`（通过 API 调用）
+- **目标**：将大量差评评论抽取为**结构化槽点 JSON**，用于前端渲染。
 
 ---
 
-#### Reduce Stage — `aggregate`
+### 2) 策略：Map–Reduce 分治思想
 
-- Merge all chunk-level outputs:
-  - Deduplicate overlapping issues
-  - Merge semantically similar items
-  - Normalize field names and structure
-  - Aggregate statistics (e.g., mention count, mention rate)
-- **Output**: a clean, standardized JSON schema, for example:  
-  `categories → items → evidence_quotes`
+#### Map 阶段：`chunk_process`
+- 将评论列表按 **`chunk_size = 13`** 进行切片：
+  - 每个 chunk 独立喂给模型做“槽点抽取 + 分类”
+  - 输出为每个 chunk 的结构化片段（建议为 JSON 或接近 JSON 的文本）
 
----
+> 直觉：让模型每次只处理 13 条，降低上下文压力，提升稳定性与一致性。
 
-### 3) Presentation Layer: Mobile-Friendly Interactive Cards
-
-- Use **HTML + CSS templates** to render the JSON into a mobile-optimized UI
-- **Core interaction design**:
-  - **Collapsed by default**: shows tag + percentage + short description
-  - **Tap to expand**: reveals supporting evidence (`evidence_quotes`) in a highlighted quote block
-
-This design prioritizes **fast scanning first, evidence second**.
+#### Reduce 阶段：`aggregate`
+- 将所有 chunk 的输出合并：
+  - 去重、归并同类项
+  - 统一字段命名与格式
+  - 汇总比例（如提及率、出现次数）
+- 输出为**标准 JSON 结构**（例如 `categories -> items -> evidence_quotes`）。
 
 ---
 
-### 4) Final Outputs (Frontend-Oriented)
-
-**Deliverables**:
-
-- **Standardized JSON**
-  - Designed for direct UI rendering
-  - Clean hierarchy and consistent fields
-- **Interactive HTML Report**
-  - Mobile-first card layout
-  - Click-to-expand evidence
-  - Optimized for rapid “risk assessment”
+### 3) 输出呈现：移动端交互式卡片（HTML/CSS 渲染）
+- 使用 **HTML/CSS 模板**将 JSON 数据渲染成移动端友好的卡片列表
+- 核心交互：
+  - 默认展示简报（tag + percentage + description）
+  - 点击展开查看证据（`evidence_quotes` 引用块）
 
 ---
 
-## 🎯 Core Philosophy
-
-- **Risk-first thinking**: Focus on what can go wrong, not marketing highlights
-- **Compression over verbosity**: Turn many noisy reviews into a few clear signals
-- **Assist, not replace**: AI reduces reading cost; the final judgment remains with the user
+### 4) 输出结果（面向前端）
+- **最终产物**：
+  1) 一份标准化 JSON（供 UI 渲染）
+  2) 基于该 JSON 渲染的移动端交互式卡片页面
